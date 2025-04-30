@@ -1,0 +1,60 @@
+---
+title: "assignment"
+format: html
+editor: visual
+---
+
+```{r}
+data(iris)
+
+```
+
+# **Task 1.**
+
+conversion from wide to long
+
+```{r}
+library(tidyr)
+library(dplyr)
+
+iris_long <- iris %>% 
+  tidyr::pivot_longer(cols=1:4, names_to = "trait", values_to = "size") 
+```
+
+# Task 2
+
+**1.1**
+
+```{r}
+
+mean <- iris_long %>%
+  group_by(Species, trait) %>% # grouping by species and trait
+  summarise(mean_size=mean(size))  #calculating mean size for every trait for every species
+print(mean)
+
+```
+
+**1.2**
+
+```{r}
+max_values <- iris_long %>%
+  filter(Species %in% c("virginica", "versicolor")) %>% # selecting only virginica and versicolor species
+  group_by(Species, trait) %>% # grouping by species and traits
+  summarise(max_value=max(size)) # calculating max value for every trait and species
+print(max_values)
+
+```
+
+**1.3**
+
+```{r}
+
+above_mean <- iris_long %>%
+  left_join(mean, by = c("Species", "trait")) %>% # left joining table with mean sizes
+  filter(size>mean_size) %>% # selecting only measurments whoch are higher than mean
+  count(Species,trait)  #counting results for every trait and species
+
+print(above_mean)
+
+
+```
