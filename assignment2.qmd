@@ -11,9 +11,6 @@ library(dplyr)
 ```
 
 The graph shows usage of 4 colors in brands
-
-![](images/clipboard-2838400159.png)
-
 I wanted to do a pie chart but I noticed that the percentages from graph don't add to 100%, probably because one brand can use more than one of given colors, so I made bar chart
 
 ```{r}
