@@ -11,15 +11,16 @@ library(dplyr)
 ```
 
 The graph shows usage of 4 colors in brands
-I wanted to do a pie chart but I noticed that the percentages from graph don't add to 100%, probably because one brand can use more than one of given colors, so I made bar chart
+
+![]()I wanted to do a pie chart but I noticed that the percentages from graph don't add to 100%, probably because one brand can use more than one of given colors, so I made bar chart
 
 ```{r}
 brand_colors <- data.frame(  # loading data
-  color = c("Blue", "Red", "Black", "Yellow")
-  percentage = c(33, 29, 28, 13)
+  color <- c("Blue", "Red", "Black", "Yellow"),
+  percentage <- c(33, 29, 28, 13)
 ) %>%
   mutate(
-    label = paste0(color, " (", percentage, "%)"), r #setting labels
+    label = paste0(color, " (", percentage, "%)"),  #setting labels
   )
 
 ```
